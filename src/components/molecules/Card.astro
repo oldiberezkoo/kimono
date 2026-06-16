@@ -1,0 +1,11 @@
+---
+export interface Props {
+  class?: string;
+}
+
+const { class: className = '' } = Astro.props;
+---
+
+<article class={`border border-neutral-200 p-6 ${className}`}>
+  <slot />
+</article>

@@ -1,0 +1,21 @@
+---
+export interface Props {
+  label: string;
+  variant?: 'primary' | 'outline' | 'ghost';
+  type?: 'button' | 'submit' | 'reset';
+}
+
+const { label, variant = 'primary', type = 'button' } = Astro.props;
+
+const base = 'w-full px-6 py-3 text-sm font-medium transition-colors cursor-pointer';
+
+const variants: Record<string, string> = {
+  primary: 'bg-black text-white hover:bg-neutral-800',
+  outline: 'border border-black text-black hover:bg-neutral-100',
+  ghost: 'text-black hover:bg-neutral-100',
+};
+---
+
+<button type={type} class={`${base} ${variants[variant]}`}>
+  {label}
+</button>

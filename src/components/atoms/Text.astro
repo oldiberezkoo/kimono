@@ -1,0 +1,30 @@
+---
+export interface Props {
+  as?: 'p' | 'span' | 'h1' | 'h2' | 'h3' | 'h4';
+  size?: 'xs' | 'sm' | 'base' | 'lg' | 'xl' | '2xl';
+  weight?: '400' | '500' | '600' | '700';
+  class?: string;
+}
+
+const { as: Tag = 'p', size = 'base', weight = '400', class: className = '' } = Astro.props;
+
+const sizes: Record<string, string> = {
+  xs: 'text-xs',
+  sm: 'text-sm',
+  base: 'text-base',
+  lg: 'text-lg',
+  xl: 'text-xl',
+  '2xl': 'text-2xl',
+};
+
+const weights: Record<string, string> = {
+  '400': 'font-normal',
+  '500': 'font-medium',
+  '600': 'font-semibold',
+  '700': 'font-bold',
+};
+---
+
+<Tag class={`leading-relaxed tracking-tight ${sizes[size]} ${weights[weight]} ${className}`}>
+  <slot />
+</Tag>
